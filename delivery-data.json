@@ -1,0 +1,14 @@
+[
+  {
+    "Id": "001",
+    "Name": "Carlos",
+    "Address": "Av. Mate de Luna 3600",
+    "CellphoneNumber": "3815363461  "
+  },
+  {
+    "Id": "002",
+    "Name": "Juan",
+    "Address": "Chacabuco 200",
+    "CellphoneNumber": "3815373567  "
+  }
+]
