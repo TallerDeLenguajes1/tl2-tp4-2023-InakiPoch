@@ -1,6 +1,6 @@
-using Entities;
+using tl2_tp4_2023_InakiPoch.Models;
+using DataModels;
 using Microsoft.AspNetCore.Mvc;
-using ReportManager;
 
 namespace tl2_tp4_2023_InakiPoch.Controllers;
 
@@ -16,23 +16,24 @@ public class DeliveryServiceController : ControllerBase {
     }
 
     [HttpGet("GetDeliveryService")]
-    public string Get() => deliveryService.Name;
-    
+    public ActionResult<DeliveryService> GetDeliveryService() => Ok(DeliveryServiceAccess.GetDeliveryService());
 
     [HttpGet("GetOrdersList")]
     public ActionResult<List<Order>> GetOrdersList() {
-        if(deliveryService.TotalOrders == null) {
+        var orders = OrdersAccess.GetOrders();
+        if(orders == null) {
             return BadRequest("No se encontraron pedidos");
         }
-        return Ok(deliveryService.TotalOrders);
+        return Ok(orders);
     }
 
     [HttpGet("GetDeliveriesList")]
     public ActionResult<List<Delivery>> GetDeliveriesList() {
-        if(deliveryService.DeliveriesList == null) {
+        var deliveries = DeliveryAccess.GetDeliveries();
+        if(deliveries == null) {
             return BadRequest("No se encontraron cadetes");
         }
-        return Ok(deliveryService.DeliveriesList);
+        return Ok(deliveries);
     }
 
     [HttpGet("GetReport")]

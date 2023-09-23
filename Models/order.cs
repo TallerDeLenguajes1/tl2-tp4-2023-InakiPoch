@@ -1,23 +1,27 @@
-namespace Entities {
-    public enum Status { Pending, Completed }
-    public class Order {
-        int orderNumber;
-        string observation;
-        Client client;
-        Delivery delivery;
-        Status orderStatus;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
-        public Order(int orderNumber, string observation, string clientName, string clientAdress, uint clientNumber) {
-            this.orderNumber = orderNumber;
-            this.observation = observation;
-            client = new Client(clientName, clientAdress, clientNumber);
-            delivery = null;
-            orderStatus = Status.Pending;
-        }
+namespace tl2_tp4_2023_InakiPoch.Models;
+public enum Status { Pending, Completed }
+public class Order {
+    int orderNumber;
+    string observation;
+    Client client;
+    Delivery delivery;
+    Status orderStatus;
 
-        public bool DeliveryAssigned() => delivery != null;
-        public Status OrderStatus { get => orderStatus; set { orderStatus = value; } }
-        public int OrderNumber { get => orderNumber; }
-        public Delivery Delivery { get => delivery; set { delivery = value; }}
+    public Order(int orderNumber, string observation, Client client, Status orderStatus) {
+        this.orderNumber = orderNumber;
+        this.observation = observation;
+        this.client = new Client(client.Name, client.Adress, client.CellPhoneNumber);
+        delivery = null;
+        this.orderStatus = orderStatus;
     }
+
+    public bool DeliveryAssigned() => delivery != null;
+    public int OrderNumber { get => orderNumber; }
+    public string Observation { get => observation; }
+    public Client Client { get => client; }
+    public Delivery Delivery { get => delivery; set { delivery = value; }}
+    public Status OrderStatus { get => orderStatus; set { orderStatus = value; } }
 }
