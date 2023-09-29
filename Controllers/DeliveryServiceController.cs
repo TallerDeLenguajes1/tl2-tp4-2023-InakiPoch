@@ -1,5 +1,4 @@
 using tl2_tp4_2023_InakiPoch.Models;
-using DataModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace tl2_tp4_2023_InakiPoch.Controllers;
@@ -16,11 +15,11 @@ public class DeliveryServiceController : ControllerBase {
     }
 
     [HttpGet("GetDeliveryService")]
-    public ActionResult<DeliveryService> GetDeliveryService() => Ok(DeliveryServiceAccess.GetDeliveryService());
+    public ActionResult<DeliveryService> GetDeliveryService() => Ok(deliveryService);
 
     [HttpGet("GetOrdersList")]
     public ActionResult<List<Order>> GetOrdersList() {
-        var orders = OrdersAccess.GetOrders();
+        var orders = deliveryService.GetOrders();
         if(orders == null) {
             return BadRequest("No se encontraron pedidos");
         }
@@ -29,7 +28,7 @@ public class DeliveryServiceController : ControllerBase {
 
     [HttpGet("GetDeliveriesList")]
     public ActionResult<List<Delivery>> GetDeliveriesList() {
-        var deliveries = DeliveryAccess.GetDeliveries();
+        var deliveries = deliveryService.GetDeliveries();
         if(deliveries == null) {
             return BadRequest("No se encontraron cadetes");
         }

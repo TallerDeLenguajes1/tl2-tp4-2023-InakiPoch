@@ -1,8 +1,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using tl2_tp4_2023_InakiPoch.Models;
 
-namespace DataModels;
+namespace tl2_tp4_2023_InakiPoch.Models;
 public abstract class DataAdress {
     public abstract List<Delivery> GetDeliveries();
     public abstract List<DeliveryService> GetService();

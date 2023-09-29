@@ -1,9 +1,8 @@
 using System.Text.Json;
-using tl2_tp4_2023_InakiPoch.Models;
 
-namespace DataModels;
-public static class DeliveryServiceAccess {
-    public static DeliveryService GetDeliveryService() {
+namespace tl2_tp4_2023_InakiPoch.Models;
+public class DeliveryServiceAccess {
+    public DeliveryService GetDeliveryService() {
         List<DeliveryService> service;
         var route = "DataFiles/delivery-service-data.json";
         string document;
