@@ -12,4 +12,12 @@ public class DeliveryAccess {
         deliveries = JsonSerializer.Deserialize<List<Delivery>>(document);
         return deliveries;
     }
+
+    public void SaveDeliveries(List<Delivery> deliveries) {
+        var route = "DataFiles/delivery-data.json";
+        var data = JsonSerializer.Serialize(deliveries, new JsonSerializerOptions { WriteIndented = true });
+        using(var writer = new StreamWriter(route)) {
+            writer.WriteLine(data);
+        }
+    }
 }

@@ -1,34 +1,18 @@
 [
   {
-    "OrderNumber": 1,
-    "Observation": "Papas",
+    "OrderNumber": 3,
+    "Observation": "Milanesa",
     "Client": {
-      "Name": "Pepe",
-      "Adress": "Adolfo de la Vega 45",
-      "CellPhoneNumber": 3815363461
+      "Name": "Raul",
+      "Adress": "Entre Rios 258",
+      "CellPhoneNumber": 3814543890
     },
     "Delivery": {
-      "Id": 2,
-      "Name": "Juan",
-      "Address": "Chacabuco 200",
-      "CellphoneNumber": "3815373567  "
+      "Id": 1,
+      "Name": "Carlos",
+      "Address": "Av. Mate de Luna 3600",
+      "CellphoneNumber": "3815363461  "
     },
-    "OrderStatus": 1
-  },
-  {
-    "OrderNumber": 2,
-    "Observation": "Sanguche",
-    "Client": {
-      "Name": "Pepe",
-      "Adress": "Adolfo de la Vega 45",
-      "CellPhoneNumber": 3815363461
-    },
-    "Delivery": {
-      "Id": 2,
-      "Name": "Juan",
-      "Address": "Chacabuco 200",
-      "CellphoneNumber": "3815373567  "
-    },
-    "OrderStatus": 1
+    "OrderStatus": 0
   }
 ]

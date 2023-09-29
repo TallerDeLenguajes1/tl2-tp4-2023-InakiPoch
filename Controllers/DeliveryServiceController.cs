@@ -43,10 +43,32 @@ public class DeliveryServiceController : ControllerBase {
         return Ok(deliveryService.GenerateReport());
     }
 
+    [HttpGet("GetOrder")]
+    public ActionResult<Order> GetOrder(int id) {
+        var order = deliveryService.GetOrder(id);
+        if(order == null)
+            return BadRequest("No se encontro el pedido");
+        return Ok(order);
+    }
+
+    [HttpGet("GetDelivery")]
+    public ActionResult<Delivery> GetDelivery(int id) {
+        var delivery = deliveryService.GetDelivery(id);
+        if(delivery == null)
+            return BadRequest("No se encontro el pedido");
+        return Ok(delivery);
+    }
+
     [HttpPost("AddOrder")]
     public ActionResult AddOrder(Order order) {
         deliveryService.AddOrder(order);
         return Ok("Pedido agregado con exito");
+    }
+
+    [HttpPost("AddDelivery")]
+    public ActionResult AddDelivery(Delivery delivery) {
+        deliveryService.AddDelivery(delivery);
+        return Ok("Cadete agregado con exito");
     }
 
     [HttpPut("AssignOrder")]

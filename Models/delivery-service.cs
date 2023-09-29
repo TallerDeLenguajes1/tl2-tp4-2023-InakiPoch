@@ -25,7 +25,12 @@ public class DeliveryService {
         File.WriteAllText(route, jsonFile);
         ordersAccess.SaveOrders(totalOrders);
     }
-    
+
+    public void AddDelivery(Delivery delivery) {
+        deliveriesList.Add(delivery);
+        deliveriesAccess.SaveDeliveries(deliveriesList);
+    }
+
     public bool AssignOrder(int orderId, int deliveryId) {
         if(!deliveriesRemain())
             return false;
@@ -85,6 +90,7 @@ public class DeliveryService {
             m_DeliveryService.ordersAccess = new OrderAccess();
             m_DeliveryService.deliveriesAccess = new DeliveryAccess();
             m_DeliveryService.deliveriesList = m_DeliveryService.deliveriesAccess.GetDeliveries();
+            m_DeliveryService.totalOrders = m_DeliveryService.ordersAccess.GetOrders();
         }
         return m_DeliveryService;
     }
@@ -99,6 +105,8 @@ public class DeliveryService {
     private bool canHaveOrders(Delivery delivery) => !delivery.IsFull();
     public List<Order> GetOrders() => ordersAccess.GetOrders(); 
     public List<Delivery> GetDeliveries() => deliveriesAccess.GetDeliveries();
+    public Order GetOrder(int orderId) => totalOrders.Single(order => order.OrderNumber == orderId);
+    public Delivery GetDelivery(int deliveryId) => deliveriesList.Single(delivery => delivery.Id == deliveryId);
 
     public string Name { get => name; }
     public string CellphoneNumber { get => cellphoneNumber; }
